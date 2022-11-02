@@ -1,0 +1,38 @@
+<div class="container">
+    <h3>Ajout d'un produit</h3>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmitForm(); onReset()">
+        <div>
+            <label> Référence du produit </label>
+            <input class="form-control" type="number" name="reference" formControlName="reference">
+        </div>
+        <div>
+            <label>Libellé</label>
+            <input class="form-control" type="text" name="lib" formControlName="libelle">
+        </div>
+
+        <div>
+            <label> Made In </label>
+            <label>
+                <input type="radio" name="madeIn" value="Tunisie" formControlName="madeIn">Tunisie
+            </label>
+            <label>
+                <input type="radio" name="madeIn" value="Autre" formControlName="madeIn">Autre
+            </label>
+        </div>
+        <div>
+            <label>Catégorie</label>
+            <select class="form-select" name="categ" formControlName="categorie">
+               <option [value]="c" *ngFor="let c of lesCategories">{{c}}</option>
+            </select>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="nouv" formControlName="nouveau"> Nouveau
+            </label>
+        </div>
+
+        <input type="submit" class="btn btn-success" value="Ajouter">
+        <input type="button" class="btn btn-warning" value="Vider">
+
+    </form>
+</div>
