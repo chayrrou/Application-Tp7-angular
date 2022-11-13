@@ -11,14 +11,16 @@ export class ProduitService {
     libelle:'montre', 
     nouveau:false, 
     madeIn:"Tunisie", 
-    categorie:"Accessoires"
+    categorie:"Accessoires",
+    pointsVentes:["Tunis","Sfax"]
     },    
     {
       reference:23, 
       libelle:'cartable', 
       nouveau:true, 
       madeIn:"Autre", 
-      categorie: "Fourniture"
+      categorie: "Fourniture",
+      pointsVentes:["Nabeul","Béjà"]
     }
   ];
 
@@ -28,5 +30,7 @@ export class ProduitService {
   public addPrduits(p:Produit){
     this.lesProduits.push(p);
   }
+ 
+
   constructor() { }
 }

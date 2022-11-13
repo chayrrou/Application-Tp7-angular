@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Produit } from 'src/app/model/produit';
 import { ProduitService } from 'src/app/services/produit.service';
 
@@ -19,6 +19,10 @@ export class AddproduitComponent implements OnInit {
     //   categorie: new FormControl('Accessoires', {nonNullable:true}),
     //   nouveau : new FormControl(true, {nonNullable:true})
     //   });
+
+    get lesPointsVentes(){
+        return this.productForm.get('pointsVentes') as FormArray;
+    }
       
     productForm!: FormGroup;
 
@@ -30,14 +34,14 @@ export class AddproduitComponent implements OnInit {
       libelle: [''],
       madeIn: ['Tunisie'],
       categorie: ['Accessoires'],
-      nouveau : true
-      })
-  
+      nouveau : [true],
+      pointsVentes : this.formBuilder.array([])
+    })
       this.productForm.get('nouveau')?.setValue(false);
   }
   
   lesProduits: Produit[]=[];
-   p:Produit[]=[];
+  // p:Produit[]=[];
 
   onSubmitForm(){
 
@@ -47,11 +51,13 @@ export class AddproduitComponent implements OnInit {
     console.log(this.productForm.get('madeIn')?.value);
     console.log(this.productForm.controls['categorie'].value);
 
-     this.produitService.addPrduits(this.productForm.value);
+    this.produitService.addPrduits(this.productForm.value);
+     
   }
 
   onReset(){
     this.productForm.reset();
+    this.lesPointsVentes.clear()
   }
 
   reintialiser(){
@@ -64,5 +70,9 @@ export class AddproduitComponent implements OnInit {
       })
   }
     
+  onAjouter() {
+     this.lesPointsVentes.push(this.formBuilder.control('')); 
+     //this.lesPointsVentes.push(new FormControl('')); //Autre possibilité
+  }
 
 }

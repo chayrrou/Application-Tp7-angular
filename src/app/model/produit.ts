@@ -4,6 +4,7 @@ export class Produit {
         public libelle: string,
         public nouveau: boolean,
         public madeIn: string,
-        public categorie: string) {
+        public categorie: string,
+        public pointsVentes : string[]) {
     }
 }
