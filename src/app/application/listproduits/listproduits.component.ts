@@ -18,4 +18,5 @@ export class ListproduitsComponent implements OnInit {
     this.lesProduits = this.produitService.getProduits();
   }
 
+  
 }

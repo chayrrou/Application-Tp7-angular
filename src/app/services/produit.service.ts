@@ -25,5 +25,8 @@ export class ProduitService {
   public getProduits(){
     return this.lesProduits;
   }
+  public addPrduits(p:Produit){
+    this.lesProduits.push(p);
+  }
   constructor() { }
 }
